@@ -9,10 +9,6 @@ A simple Flutter app that allows users to select and play videos from their devi
 - Play and pause video playback.
 - Seek within the video.
 
-## Screenshots
-
-Include screenshots of your app in action here.
-
 ## Getting Started
 
 Follow the steps below to get started with the Flutter Video Player app:
@@ -26,4 +22,4 @@ Follow the steps below to get started with the Flutter Video Player app:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/flutter-video-player-app.git
+   git clone https://github.com/ABUBAKARL/flutter_video_player

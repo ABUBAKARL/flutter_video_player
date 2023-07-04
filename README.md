@@ -1,16 +1,29 @@
-# flutter_video_player
+# Flutter Video Player App
 
-A new Flutter project.
+A simple Flutter app that allows users to select and play videos from their device storage. The app utilizes the `video_player` plugin to provide video playback functionality with pause, play, and seeking features.
+
+## Features
+
+- Request storage permission to access videos on the device.
+- List all videos available on the Android device.
+- Play and pause video playback.
+- Seek within the video.
+
+## Screenshots
+
+Include screenshots of your app in action here.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Follow the steps below to get started with the Flutter Video Player app:
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK installed (https://flutter.dev/docs/get-started/install)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/flutter-video-player-app.git

@@ -17,15 +17,14 @@ class _HomepageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    videoFetch.getStoragePermission();
-    setState(() {
-      
-    });
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+    );
+    videoFetch.getStoragePermission().then((value) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,

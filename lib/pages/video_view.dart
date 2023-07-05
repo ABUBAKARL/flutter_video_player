@@ -14,11 +14,14 @@ class VideoView extends StatefulWidget {
 class _VideoViewState extends State<VideoView> {
   late VideoPlayerController videoPlayerController;
   bool visible = true;
-  IconData videostate = Icons.pause_rounded;
+  IconData playState = Icons.pause_rounded;
+  IconData audioState = Icons.volume_up_rounded;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     videoPlayerController = VideoPlayerController.file(
       File(
         widget.video.path,
@@ -31,7 +34,7 @@ class _VideoViewState extends State<VideoView> {
             setState(() {}),
           })
       ..addListener(() {
-        videostate = videoPlayerController.value.isPlaying
+        playState = videoPlayerController.value.isPlaying
             ? Icons.pause_rounded
             : Icons.play_arrow_rounded;
         setState(() {});
@@ -49,12 +52,6 @@ class _VideoViewState extends State<VideoView> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.green,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
-    ));
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -92,11 +89,26 @@ class _VideoViewState extends State<VideoView> {
                                       ? videoPlayerController.pause()
                                       : videoPlayerController.play();
                                 },
-                                icon: Icon(videostate),
+                                icon: Icon(playState),
+                              ),
+                              IconButton(
+                                color: Colors.white,
+                                iconSize: 30,
+                                onPressed: () {
+                                  videoPlayerController.setVolume(
+                                      audioState == Icons.volume_up_rounded
+                                          ? 0
+                                          : 1);
+                                  audioState =
+                                      audioState == Icons.volume_up_rounded
+                                          ? Icons.volume_off_rounded
+                                          : Icons.volume_up_rounded;
+                                },
+                                icon: Icon(audioState),
                               ),
                               Expanded(
                                 child: Slider(
-                                  activeColor: Colors.green,
+                                  activeColor: Colors.blue,
                                   value: videoPlayerController
                                       .value.position.inSeconds
                                       .toDouble(),
@@ -115,7 +127,9 @@ class _VideoViewState extends State<VideoView> {
                               ),
                               Text(
                                 "${videoPlayerController.value.position.inMinutes}:${videoPlayerController.value.position.inSeconds % 60}/${videoPlayerController.value.duration.inMinutes}:${videoPlayerController.value.duration.inSeconds % 60}",
-                                style: const TextStyle(color: Colors.white),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ],
                           ),

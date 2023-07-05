@@ -53,7 +53,7 @@ class VideoFetch {
   ];
   late List<File> videoFiles;
   late Directory externalDir;
-  getStoragePermission() async {
+  Future getStoragePermission() async {
     PermissionStatus storagepermission = await Permission.storage.request();
     if (storagepermission.isGranted) {
       debugPrint("Permission Granted");

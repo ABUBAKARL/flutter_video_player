@@ -19,24 +19,26 @@ class _VideoListState extends State<VideoList> {
         itemBuilder: (BuildContext context, int index) {
           final videoName =
               widget.videoList[index].path.split("/").last.split(".").first;
-          return ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return VideoView(
-                      video: File(
-                        widget.videoList[index].path,
-                      ),
-                    );
-                  },
-                ),
-              );
-              // print(Video_name);
-            },
-            title: Text(
-              videoName,
+          return Card(
+            child: ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return VideoView(
+                        video: File(
+                          widget.videoList[index].path,
+                        ),
+                      );
+                    },
+                  ),
+                );
+                // print(Video_name);
+              },
+              title: Text(
+                videoName,
+              ),
             ),
           );
         },
